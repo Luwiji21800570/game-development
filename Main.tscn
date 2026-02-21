@@ -1,0 +1,147 @@
+[gd_scene load_steps=21 format=3 uid="uid://b2ud7eq26x1wo"]
+
+[ext_resource type="Script" uid="uid://d3128efc1mu35" path="res://main.gd" id="1_fos0i"]
+[ext_resource type="Texture2D" uid="uid://pihqst2gktw" path="res://360_F_599720625_N2U8AQzhS5y7llrp2AMAQmKL4B6nWHKT.jpg" id="3_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://b12auk335j715" path="res://enemy.tscn" id="4_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://bfkxkpb74x8wx" path="res://portal.tscn" id="6_trn2v"]
+[ext_resource type="Script" uid="uid://bq6s8ic0kh7du" path="res://portal.gd" id="7_03owx"]
+[ext_resource type="PackedScene" uid="uid://dahq4pok40cju" path="res://coin.tscn" id="7_lgr22"]
+[ext_resource type="PackedScene" uid="uid://cw788pfci5tes" path="res://player.tscn" id="7_trn2v"]
+[ext_resource type="Script" uid="uid://b6v8emn0g52he" path="res://enemy.gd" id="7_wkp8b"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_glv2v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0du0"]
+size = Vector2(107.5, 7.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cm0pq"]
+size = Vector2(1149, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fos0i"]
+size = Vector2(168.75, 8.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dxm6"]
+size = Vector2(97.25, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgr22"]
+size = Vector2(87.375, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trn2v"]
+size = Vector2(61, 11.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03owx"]
+size = Vector2(67.875, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkp8b"]
+size = Vector2(23, 693)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20pc6"]
+size = Vector2(258, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vvyt"]
+size = Vector2(225, 11.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6i3y"]
+size = Vector2(60.75, 4.75)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_fos0i")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576.125, 324.24997)
+scale = Vector2(1.8000783, 1.7763888)
+texture = ExtResource("3_cm0pq")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_glv2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(62.25, 378)
+shape = SubResource("RectangleShape2D_r0du0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground"]
+position = Vector2(576, 669)
+shape = SubResource("RectangleShape2D_cm0pq")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Ground"]
+position = Vector2(727.625, 620)
+shape = SubResource("RectangleShape2D_fos0i")
+one_way_collision = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Ground"]
+position = Vector2(208.375, 547)
+shape = SubResource("RectangleShape2D_3dxm6")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Ground"]
+position = Vector2(936.3125, 597)
+shape = SubResource("RectangleShape2D_lgr22")
+one_way_collision = true
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Ground"]
+position = Vector2(910.5, 518.125)
+shape = SubResource("RectangleShape2D_trn2v")
+one_way_collision = true
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Ground"]
+position = Vector2(999.0625, 447.5)
+shape = SubResource("RectangleShape2D_03owx")
+one_way_collision = true
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Ground"]
+position = Vector2(-80, 333)
+shape = SubResource("RectangleShape2D_wkp8b")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Ground"]
+position = Vector2(1214, 345)
+shape = SubResource("RectangleShape2D_wkp8b")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Ground"]
+position = Vector2(644, 553.5)
+shape = SubResource("RectangleShape2D_20pc6")
+one_way_collision = true
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Ground"]
+position = Vector2(910.5, 381.125)
+shape = SubResource("RectangleShape2D_5vvyt")
+one_way_collision = true
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Ground"]
+position = Vector2(1101.375, 289.625)
+shape = SubResource("RectangleShape2D_c6i3y")
+one_way_collision = true
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Ground"]
+position = Vector2(1001, 276)
+shape = SubResource("RectangleShape2D_c6i3y")
+one_way_collision = true
+
+[node name="Portal" parent="." instance=ExtResource("6_trn2v")]
+position = Vector2(994, 414)
+script = ExtResource("7_03owx")
+next_level_path = "res://level2.tscn"
+
+[node name="Coin" parent="." instance=ExtResource("7_lgr22")]
+position = Vector2(212, 501)
+
+[node name="Coin2" parent="." instance=ExtResource("7_lgr22")]
+position = Vector2(594, 505)
+
+[node name="Coin3" parent="." instance=ExtResource("7_lgr22")]
+position = Vector2(858, 333)
+
+[node name="Coin4" parent="." instance=ExtResource("7_lgr22")]
+position = Vector2(995, 403)
+
+[node name="Coin5" parent="." instance=ExtResource("7_lgr22")]
+position = Vector2(54, 615)
+
+[node name="Enemy" parent="." instance=ExtResource("4_cm0pq")]
+position = Vector2(522, 634)
+script = ExtResource("7_wkp8b")
+
+[node name="Enemy2" parent="." instance=ExtResource("4_cm0pq")]
+position = Vector2(1030, 577)
+script = ExtResource("7_wkp8b")
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("7_trn2v")]
+position = Vector2(88, 346)
