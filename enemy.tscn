@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b12auk335j715"]
+[gd_scene format=3 uid="uid://b12auk335j715"]
 
 [ext_resource type="Texture2D" uid="uid://ciqipc7dlua68" path="res://image (1).png" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://cfa2hs6lmkxsk" path="res://image.png" id="2_4gyqm"]
@@ -136,12 +136,13 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e1ltt"]
+radius = 45.0
 height = 146.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" unique_id=1028443236]
 collision_layer = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=219730351]
 position = Vector2(-54.250015, -113)
 scale = Vector2(2.9937499, 3.4375002)
 sprite_frames = SubResource("SpriteFrames_hb8ge")
@@ -150,7 +151,7 @@ autoplay = "idle"
 frame = 9
 frame_progress = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=687273878]
 position = Vector2(-56, -55)
 shape = SubResource("CapsuleShape2D_e1ltt")
 one_way_collision = true

@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://baqo6epw8kvnh"]
+[gd_scene format=3 uid="uid://baqo6epw8kvnh"]
 
 [ext_resource type="Script" uid="uid://dfdhl1gdj4duy" path="res://level_2.gd" id="1_8tcn8"]
 [ext_resource type="Texture2D" uid="uid://d4l77qm45ed4n" path="res://wild-west-desert-platformer-game-tile-set-vector.jpg" id="1_y0xe8"]
 [ext_resource type="PackedScene" uid="uid://cw788pfci5tes" path="res://player.tscn" id="2_6q4t8"]
 [ext_resource type="PackedScene" uid="uid://dahq4pok40cju" path="res://coin.tscn" id="3_8tcn8"]
+[ext_resource type="PackedScene" uid="uid://bh014747vh3bu" path="res://enemy2.tscn" id="5_r6vdu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r40rm"]
 size = Vector2(210.5, 23.5)
@@ -15,7 +16,7 @@ size = Vector2(196.5, 20)
 size = Vector2(130.5, 23.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6vdu"]
-size = Vector2(22.75, 89)
+size = Vector2(22.75, 100.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21xmu"]
 size = Vector2(332, 21.5)
@@ -24,10 +25,10 @@ size = Vector2(332, 21.5)
 size = Vector2(125.5, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmy57"]
-size = Vector2(236.5, 6)
+size = Vector2(263.25, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qulpo"]
-size = Vector2(238, 6)
+size = Vector2(280.5, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jifot"]
 size = Vector2(261, 20)
@@ -35,85 +36,109 @@ size = Vector2(261, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3opl0"]
 size = Vector2(20, 654)
 
-[node name="Level2" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dc5vx"]
+size = Vector2(32.5, 20)
+
+[node name="Level2" type="Node2D" unique_id=1774403072]
 script = ExtResource("1_8tcn8")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1031044813]
 position = Vector2(581.00006, 324)
 scale = Vector2(0.7603279, 0.6612245)
 texture = ExtResource("1_y0xe8")
 
-[node name="Ground" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="." unique_id=660941346]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1155168008]
 position = Vector2(115, 516)
 shape = SubResource("RectangleShape2D_r40rm")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground" unique_id=1450926096]
 position = Vector2(453, 514)
 shape = SubResource("RectangleShape2D_6q4t8")
 
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="Ground"]
-position = Vector2(1051, 240)
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Ground" unique_id=840560449]
+position = Vector2(1050, 255)
 shape = SubResource("RectangleShape2D_6q4t8")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Ground"]
-position = Vector2(653, 591)
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Ground" unique_id=461808298]
+position = Vector2(654, 599)
 shape = SubResource("RectangleShape2D_8tcn8")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Ground"]
-position = Vector2(566.75, 547)
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Ground" unique_id=1715294432]
+position = Vector2(564, 558.25)
 shape = SubResource("RectangleShape2D_r6vdu")
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Ground"]
-position = Vector2(931.625, 273)
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Ground" unique_id=1257871152]
+position = Vector2(931, 282)
 shape = SubResource("RectangleShape2D_r6vdu")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Ground"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Ground" unique_id=1386135900]
 position = Vector2(996, 556)
 shape = SubResource("RectangleShape2D_21xmu")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Ground"]
-position = Vector2(851.25, 324)
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Ground" unique_id=665876398]
+position = Vector2(851, 330)
 shape = SubResource("RectangleShape2D_8i3m3")
 
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="Ground"]
-position = Vector2(678.75, 146)
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Ground" unique_id=284984177]
+position = Vector2(682, 155)
 shape = SubResource("RectangleShape2D_rmy57")
 
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="Ground"]
-position = Vector2(384, 360)
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Ground" unique_id=798895635]
+position = Vector2(385, 368)
 shape = SubResource("RectangleShape2D_qulpo")
 
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="Ground"]
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Ground" unique_id=143411539]
 position = Vector2(148, 187)
 shape = SubResource("RectangleShape2D_jifot")
 
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="Ground"]
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Ground" unique_id=1726266568]
 position = Vector2(-20, 317)
 shape = SubResource("RectangleShape2D_3opl0")
 
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="Ground"]
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Ground" unique_id=301119074]
 position = Vector2(1178, 316)
 shape = SubResource("RectangleShape2D_3opl0")
 
-[node name="Player" parent="." instance=ExtResource("2_6q4t8")]
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Ground" unique_id=1889975422]
+position = Vector2(1015, 175)
+shape = SubResource("RectangleShape2D_dc5vx")
+one_way_collision = true
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Ground" unique_id=528613478]
+position = Vector2(1039, 208)
+shape = SubResource("RectangleShape2D_dc5vx")
+one_way_collision = true
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="Ground" unique_id=721311417]
+position = Vector2(987, 208)
+shape = SubResource("RectangleShape2D_dc5vx")
+one_way_collision = true
+
+[node name="Player" parent="." unique_id=47457786 instance=ExtResource("2_6q4t8")]
 position = Vector2(113, 485)
 
-[node name="Coin" parent="." instance=ExtResource("3_8tcn8")]
+[node name="Coin" parent="." unique_id=708852644 instance=ExtResource("3_8tcn8")]
 position = Vector2(454, 463)
 
-[node name="Coin2" parent="." instance=ExtResource("3_8tcn8")]
-position = Vector2(668, 551)
+[node name="Coin2" parent="." unique_id=595608350 instance=ExtResource("3_8tcn8")]
+position = Vector2(1015, 124)
 
-[node name="Coin3" parent="." instance=ExtResource("3_8tcn8")]
+[node name="Coin3" parent="." unique_id=67190947 instance=ExtResource("3_8tcn8")]
 position = Vector2(1109, 506)
 
-[node name="Coin4" parent="." instance=ExtResource("3_8tcn8")]
+[node name="Coin4" parent="." unique_id=1587186184 instance=ExtResource("3_8tcn8")]
 position = Vector2(832, 294)
 
-[node name="Coin5" parent="." instance=ExtResource("3_8tcn8")]
+[node name="Coin5" parent="." unique_id=1916537887 instance=ExtResource("3_8tcn8")]
 position = Vector2(685, 117)
 
-[node name="SpawnPoint" type="Marker2D" parent="."]
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=630710001]
 position = Vector2(100, 434)
+
+[node name="enemy2" parent="." unique_id=1265032943 instance=ExtResource("5_r6vdu")]
+position = Vector2(958, 506)
+
+[node name="enemy3" parent="." unique_id=314786253 instance=ExtResource("5_r6vdu")]
+position = Vector2(329, 310)
