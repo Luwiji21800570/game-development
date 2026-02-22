@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://condt27evf3dg" path="res://hud.gd" id="1_37p78"]
 [ext_resource type="Texture2D" uid="uid://b2r2gx3rjpf7m" path="res://brackeys_platformer_assets/AXIALE_hearts/hearts/heart_spritesheet_32x32.png" id="2_64ctp"]
+[ext_resource type="Texture2D" uid="uid://d0bq7uwkl41pt" path="res://brackeys_platformer_assets/brackeys_platformer_assets/VFX 5/sprite-sheet.png" id="3_8sq4i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8sq4i"]
 atlas = ExtResource("2_64ctp")
@@ -46,6 +47,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_61f8s"]
+atlas = ExtResource("3_8sq4i")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g10ll"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61f8s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="hud" type="CanvasLayer" unique_id=2026440059]
 script = ExtResource("1_37p78")
 
@@ -57,3 +73,6 @@ sprite_frames = SubResource("SpriteFrames_61f8s")
 
 [node name="Heart3" type="AnimatedSprite2D" parent="." unique_id=94006521]
 sprite_frames = SubResource("SpriteFrames_61f8s")
+
+[node name="SpecialIcon" type="AnimatedSprite2D" parent="." unique_id=1131572330]
+sprite_frames = SubResource("SpriteFrames_g10ll")

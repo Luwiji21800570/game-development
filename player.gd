@@ -17,6 +17,8 @@ var jump_count := 0
 var max_jumps := 1
 var pause_menu : Control
 var hud : CanvasLayer
+var special_cooldown := 0.0
+const SPECIAL_COOLDOWN_TIME := 10.0
 
 @onready var sprite := $AnimatedSprite2D
 @onready var hitbox := $Hitbox
@@ -40,6 +42,11 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("pause"):
 		pause_menu.visible = !pause_menu.visible
 		get_tree().paused = pause_menu.visible
+	if special_cooldown > 0:
+		special_cooldown -= delta
+		hud.update_special_cooldown(special_cooldown)
+	elif special_cooldown <= 0:
+		hud.update_special_cooldown(0)
 
 	var direction := 0
 
@@ -68,10 +75,11 @@ func _physics_process(delta):
 		hitbox.monitoring = true
 		sprite.play("attack")
 
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and not is_attacking and not is_special and not is_dodging:
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and not is_attacking and not is_special and not is_dodging and special_cooldown <= 0:
 		is_special = true
+		special_cooldown = SPECIAL_COOLDOWN_TIME
 		special_hitbox.monitoring = true
-		sprite.play("special")  # replace with your special animation name
+		sprite.play("special")
 
 	if Input.is_action_just_pressed("dodge") and can_dodge and not is_dodging and not is_attacking and not is_special:
 		is_dodging = true
@@ -124,6 +132,7 @@ func die():
 	set_collision_layer(0)
 	set_collision_mask(0)
 	sprite.play("death")
+	
 
 func _show_death_menu():
 	var death_menu = preload("res://death_menu.tscn").instantiate()
