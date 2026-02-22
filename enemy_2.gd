@@ -3,6 +3,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const DASH_SPEED = 500.0
 const DETECT_RANGE = 200.0
+const EXPLOSION_RANGE = 200.0
 
 var hp := 20
 var is_dashing := false
@@ -18,15 +19,9 @@ func _physics_process(delta: float) -> void:
 
 	var player = _get_player_in_sight()
 
-	if player and not is_dashing:
-		is_dashing = true
-		animated_sprite.play("dash")  # change to whatever your dash animation is called
-
 	if is_dashing and player:
-		# Keep dashing toward the player horizontally
 		var direction = sign(player.global_position.x - global_position.x)
 		velocity.x = direction * DASH_SPEED
-		# Update facing direction
 		animated_sprite.scale.x = abs(animated_sprite.scale.x) * direction
 	elif not is_dashing:
 		var direction := Input.get_axis("ui_left", "ui_right")
@@ -49,11 +44,9 @@ func _get_player_in_sight() -> Node2D:
 	if distance > DETECT_RANGE:
 		return null
 
-	# Check if player is roughly on the same Y level (in front, not above/below)
 	if abs(player.global_position.y - global_position.y) > 60:
 		return null
 
-	# Line of sight raycast
 	var query = PhysicsRayQueryParameters2D.create(global_position, player.global_position)
 	query.exclude = [self]
 	var result = space_state.intersect_ray(query)
@@ -74,4 +67,15 @@ func _pop() -> void:
 	set_collision_mask(0)
 	animated_sprite.play("explode")
 	await animated_sprite.animation_finished
+	_explosion_damage()
 	queue_free()
+
+func _explosion_damage() -> void:
+	var players = get_tree().get_nodes_in_group("player")
+	print("Checking explosion damage, players found: ", players.size())
+	for player in players:
+		var distance = global_position.distance_to(player.global_position)
+		print("Player distance: ", distance, " | Explosion range: ", EXPLOSION_RANGE)
+		if distance <= EXPLOSION_RANGE:
+			player.take_damage(3)
+			print("Explosion hit player!")

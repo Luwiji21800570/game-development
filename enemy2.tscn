@@ -492,6 +492,7 @@ frame_progress = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=917918217]
 position = Vector2(-1, -32)
 shape = SubResource("CapsuleShape2D_kjc2g")
+one_way_collision = true
 
 [node name="StompArea" type="Area2D" parent="." unique_id=1787331965]
 

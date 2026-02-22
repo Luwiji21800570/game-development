@@ -137,7 +137,11 @@ script = ExtResource("7_wkp8b")
 position = Vector2(1030, 577)
 script = ExtResource("7_wkp8b")
 
-[node name="Player" parent="." unique_id=1765113195 groups=["player"] instance=ExtResource("7_trn2v")]
+[node name="Enemy4" parent="." unique_id=671240770 instance=ExtResource("4_cm0pq")]
+position = Vector2(1144, 267)
+script = ExtResource("7_wkp8b")
+
+[node name="Player" parent="." unique_id=1765113195 instance=ExtResource("7_trn2v")]
 position = Vector2(88, 346)
 
 [node name="Portal" parent="." unique_id=855964937 instance=ExtResource("6_trn2v")]

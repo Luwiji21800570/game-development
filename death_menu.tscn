@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c7glljufkqjdl"]
+
+[ext_resource type="Script" uid="uid://deqmm0uf65uoy" path="res://death_menu.gd" id="1_dhhda"]
+
+[node name="death_menu" type="CanvasLayer" unique_id=1639701226]
+script = ExtResource("1_dhhda")
