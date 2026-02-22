@@ -5,9 +5,10 @@ extends Area2D
 
 func _ready():
 	body_entered.connect(_on_body_entered)
-	animated_sprite.play("idle")  # replace with your animation name
+	animated_sprite.play("idle")
 
 func _on_body_entered(body):
 	if body.name == "Player" and visible:
 		Global.current_level = 2
+		Global.levels_unlocked = 2
 		get_tree().change_scene_to_file(next_level_path)
