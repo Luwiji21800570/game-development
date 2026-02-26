@@ -4,6 +4,7 @@ var hearts = []
 var max_hp := 12
 var current_hp := 12
 var special_label : Label
+var level_label : Label
 
 @onready var special_icon := $SpecialIcon
 
@@ -36,7 +37,7 @@ func _ready():
 	# Move special icon into container
 	special_icon.reparent(container)
 	special_icon.stop()
-	special_icon.position = Vector2(40, 30)  # centered inside box
+	special_icon.position = Vector2(40, 30)
 
 	# Cooldown label inside container
 	special_label = Label.new()
@@ -47,6 +48,33 @@ func _ready():
 	special_label.add_theme_font_size_override("font_size", 14)
 	special_label.text = "READY"
 	container.add_child(special_label)
+
+	# Level notification
+	level_label = Label.new()
+	level_label.add_theme_font_size_override("font_size", 48)
+	level_label.add_theme_color_override("font_color", Color.WHITE)
+	level_label.add_theme_constant_override("outline_size", 3)
+	level_label.add_theme_color_override("font_outline_color", Color.BLACK)
+	level_label.position = Vector2(576 - 75, 50)
+	level_label.text = "Level " + str(Global.current_level)
+	level_label.modulate.a = 0.0
+	add_child(level_label)
+		# Subtitle for level 2
+	if Global.current_level == 2:
+		var subtitle = Label.new()
+		subtitle.add_theme_font_size_override("font_size", 18)
+		subtitle.add_theme_color_override("font_color", Color.YELLOW)
+		subtitle.add_theme_constant_override("outline_size", 2)
+		subtitle.add_theme_color_override("font_outline_color", Color.BLACK)
+		subtitle.position = Vector2(576 - 220, 110)
+		subtitle.text = "You have temporarily unlocked double jump for this level!"
+		subtitle.modulate.a = 0.0
+		add_child(subtitle)
+		var tween2 = create_tween()
+		tween2.tween_property(subtitle, "modulate:a", 1.0, 0.5)
+		tween2.tween_interval(2.0)
+		tween2.tween_property(subtitle, "modulate:a", 0.0, 0.5)
+	_flash_level_label()
 
 func update_hearts():
 	for i in 3:
@@ -73,3 +101,9 @@ func update_special_cooldown(remaining: float):
 	else:
 		special_label.text = str(ceil(remaining)) + "s"
 		special_icon.modulate = Color(0.4, 0.4, 0.4, 1)
+
+func _flash_level_label():
+	var tween = create_tween()
+	tween.tween_property(level_label, "modulate:a", 1.0, 0.5)
+	tween.tween_interval(1.5)
+	tween.tween_property(level_label, "modulate:a", 0.0, 0.5)

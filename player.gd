@@ -37,6 +37,7 @@ func _ready():
 	get_tree().root.add_child(pause_menu)
 	hud = preload("res://hud.tscn").instantiate()
 	get_tree().root.add_child(hud)
+	
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("pause"):

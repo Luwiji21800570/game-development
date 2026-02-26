@@ -12,6 +12,7 @@ var player_in_area := false
 
 @onready var sprite := $AnimatedSprite2D
 @onready var damage_area = $Area2D
+@onready var hp_bar = $HPBar
 
 func _ready():
 	sprite.animation_finished.connect(_on_animation_finished)
@@ -20,6 +21,9 @@ func _ready():
 	damage_area.body_exited.connect(_on_body_exited)
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
+	hp_bar.max_value = hp
+	hp_bar.value = hp
+
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -61,7 +65,14 @@ func _on_body_exited(body):
 	if body.is_in_group("player"):
 		player_in_area = false
 
+
 func take_damage(amount):
 	hp -= amount
+	hp_bar.value = hp
+	# Spawn damage number
+	var dmg = preload("res://damage_number.tscn").instantiate()
+	dmg.position = global_position + Vector2(0, -40)
+	get_parent().add_child(dmg)
+	dmg.show_damage(amount)
 	if hp <= 0:
 		queue_free()

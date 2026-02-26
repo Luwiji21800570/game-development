@@ -499,3 +499,11 @@ one_way_collision = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea" unique_id=621210947]
 position = Vector2(0, -99)
 shape = SubResource("RectangleShape2D_jugo2")
+
+[node name="HPBar" type="ProgressBar" parent="." unique_id=1347660227]
+offset_left = -36.0
+offset_top = -133.0
+offset_right = 35.0
+offset_bottom = -106.0
+max_value = 20.0
+value = 20.0
