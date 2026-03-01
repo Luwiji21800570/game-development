@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://br0ka2nbn814j"]
 
 [ext_resource type="Script" uid="uid://cnn3obn74urom" path="res://Menu.gd" id="1_lti8b"]
+[ext_resource type="AudioStream" uid="uid://83uat4bd7qdt" path="res://bgMusic0.mp3" id="2_ouk20"]
 
 [node name="Menu" type="Control" unique_id=1675668786]
 layout_mode = 3
@@ -8,3 +9,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_lti8b")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=725533707]
+stream = ExtResource("2_ouk20")
+volume_db = 9.143
+autoplay = true

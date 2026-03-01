@@ -23,6 +23,11 @@ const SPECIAL_COOLDOWN_TIME := 10.0
 @onready var sprite := $AnimatedSprite2D
 @onready var hitbox := $Hitbox
 @onready var special_hitbox := $SpecialHitbox
+@onready var jump_sound := $JumpSound
+@onready var attack_sound := $AttackSound
+@onready var special_sound := $SpecialSound
+@onready var hurt_sound := $HurtSound
+@onready var dash_sound := $DashSound
 
 func _ready():
 	sprite.animation_finished.connect(_on_animation_finished)
@@ -37,12 +42,12 @@ func _ready():
 	get_tree().root.add_child(pause_menu)
 	hud = preload("res://hud.tscn").instantiate()
 	get_tree().root.add_child(hud)
-	
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("pause"):
 		pause_menu.visible = !pause_menu.visible
 		get_tree().paused = pause_menu.visible
+
 	if special_cooldown > 0:
 		special_cooldown -= delta
 		hud.update_special_cooldown(special_cooldown)
@@ -70,17 +75,20 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and jump_count < max_jumps and not is_dodging:
 		velocity.y = jump_force
 		jump_count += 1
+		jump_sound.play()
 
 	if Input.is_action_just_pressed("attack") and not is_attacking and not is_special and not is_dodging:
 		is_attacking = true
 		hitbox.monitoring = true
 		sprite.play("attack")
+		attack_sound.play()
 
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and not is_attacking and not is_special and not is_dodging and special_cooldown <= 0:
 		is_special = true
 		special_cooldown = SPECIAL_COOLDOWN_TIME
 		special_hitbox.monitoring = true
 		sprite.play("special")
+		special_sound.play()
 
 	if Input.is_action_just_pressed("dodge") and can_dodge and not is_dodging and not is_attacking and not is_special:
 		is_dodging = true
@@ -90,6 +98,7 @@ func _physics_process(delta):
 			direction = sign(sprite.scale.x)
 		velocity.x = direction * dodge_speed
 		velocity.y = 0
+		dash_sound.play()
 
 	if is_dodging:
 		dodge_timer -= delta
@@ -122,10 +131,10 @@ func _on_special_hitbox_body_entered(body):
 	if body.has_method("take_damage"):
 		var multiplier = randf_range(1.5, 3.0)
 		var damage = int(attack_damage * multiplier)
-		print("Special hit! Damage: ", damage)
 		body.take_damage(damage)
 
 func take_damage(amount: int):
+	hurt_sound.play()
 	hud.take_damage(amount)
 
 func die():
@@ -133,7 +142,6 @@ func die():
 	set_collision_layer(0)
 	set_collision_mask(0)
 	sprite.play("death")
-	
 
 func _show_death_menu():
 	var death_menu = preload("res://death_menu.tscn").instantiate()

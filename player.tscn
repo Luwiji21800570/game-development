@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://f2if5uif56s3" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://c2k5ak3c407fa" path="res://Human_Knight.png" id="2_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://d0bq7uwkl41pt" path="res://brackeys_platformer_assets/brackeys_platformer_assets/VFX 5/sprite-sheet.png" id="3_i3pqv"]
+[ext_resource type="AudioStream" uid="uid://db502880i0m2r" path="res://brackeys_platformer_assets/brackeys_platformer_assets/sounds/jump.wav" id="4_sweqy"]
+[ext_resource type="AudioStream" uid="uid://bne4m16k4hukk" path="res://brackeys_platformer_assets/brackeys_platformer_assets/sounds/tap.wav" id="5_2hs0m"]
+[ext_resource type="AudioStream" uid="uid://cu1t8s8tm6k6h" path="res://brackeys_platformer_assets/brackeys_platformer_assets/sounds/power_up.wav" id="6_2hs0m"]
+[ext_resource type="AudioStream" uid="uid://hfmf7dcmep11" path="res://brackeys_platformer_assets/brackeys_platformer_assets/sounds/hurt.wav" id="7_1jxqw"]
+[ext_resource type="AudioStream" uid="uid://bljkf5cb1jhmv" path="res://dash.ogg" id="8_dw050"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
 atlas = ExtResource("2_i3pqv")
@@ -261,5 +266,22 @@ shape = SubResource("RectangleShape2D_onrkg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialHitbox" unique_id=1596604937]
 position = Vector2(-29, 9)
 shape = SubResource("RectangleShape2D_j5n4i")
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=693980710]
+stream = ExtResource("4_sweqy")
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="." unique_id=1999753867]
+stream = ExtResource("5_2hs0m")
+volume_db = 24.0
+
+[node name="SpecialSound" type="AudioStreamPlayer2D" parent="." unique_id=2084564225]
+stream = ExtResource("6_2hs0m")
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=1437964868]
+stream = ExtResource("7_1jxqw")
+volume_db = 24.0
+
+[node name="DashSound" type="AudioStreamPlayer2D" parent="." unique_id=1186472343]
+stream = ExtResource("8_dw050")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dahq4pok40cju" path="res://coin.tscn" id="7_lgr22"]
 [ext_resource type="PackedScene" uid="uid://cw788pfci5tes" path="res://player.tscn" id="7_trn2v"]
 [ext_resource type="Script" uid="uid://b6v8emn0g52he" path="res://enemy.gd" id="7_wkp8b"]
+[ext_resource type="AudioStream" uid="uid://b4ldh1bjgih43" path="res://bgMusic.mp3" id="8_trn2v"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_glv2v"]
 
@@ -146,3 +147,7 @@ position = Vector2(88, 346)
 
 [node name="Portal" parent="." unique_id=855964937 instance=ExtResource("6_trn2v")]
 position = Vector2(976, 326)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=227157444]
+stream = ExtResource("8_trn2v")
+autoplay = true

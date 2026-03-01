@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cw788pfci5tes" path="res://player.tscn" id="2_6q4t8"]
 [ext_resource type="PackedScene" uid="uid://dahq4pok40cju" path="res://coin.tscn" id="3_8tcn8"]
 [ext_resource type="PackedScene" uid="uid://bh014747vh3bu" path="res://enemy2.tscn" id="5_r6vdu"]
+[ext_resource type="AudioStream" uid="uid://totwp3575lrt" path="res://bgMusic2.mp3" id="6_21xmu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r40rm"]
 size = Vector2(210.5, 23.5)
@@ -148,3 +149,7 @@ position = Vector2(1095, 217)
 
 [node name="enemy5" parent="." unique_id=1847886211 instance=ExtResource("5_r6vdu")]
 position = Vector2(422, 337)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1092051496]
+stream = ExtResource("6_21xmu")
+autoplay = true

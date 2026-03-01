@@ -138,3 +138,80 @@ Features Implemented
 Scene transitions help in organizing game progression.
 Combat mechanics introduce interaction and challenge.
 Future improvements may include health systems and additional enemy types.
+
+# UI/UX, HUD, Audio & Enemy AI
+
+**Date: February 28 (Week 3 - Activity 1 & 2)**
+
+## Activity Overview
+
+This week focused on building out the full UI/UX system, integrating audio, and implementing enemy AI behaviors into the game prototype.
+
+---
+
+## Features Implemented
+
+**1. HUD System**
+- Implemented a heart-based health system with 3 hearts, each divided into 4 quarters (12 total HP).
+- Used a 32x32 pixel heart spritesheet with 5 frames representing full to empty states.
+- Hearts update in real time as the player takes damage.
+- Player HP carries over between levels — health is not reset on level transition.
+
+**2. Menu System**
+- Built a main menu with a scrolling parallax background.
+- Added level select buttons with styled UI using a custom 8-bit font (Press Start 2P).
+- Level 2 is locked until the player clears Level 1 via the portal.
+- Author name displayed on the menu screen.
+
+**3. Pause Menu**
+- Implemented a pause menu triggered by the ESC key.
+- Options to resume the game or return to the main menu.
+
+**4. Death System**
+- Player has a death animation that plays on reaching 0 HP.
+- Death menu appears after the animation with options to respawn or return to the main menu.
+- Respawning reloads the current level with full HP restored.
+
+**5. Special Attack**
+- Added a right-click special attack with a 10-second cooldown.
+- Deals random damage between 1.5x–3x normal attack damage.
+- Cooldown icon displayed on the HUD with a timer countdown.
+- Separate hitbox for the special attack with a different collision shape.
+
+**6. Damage Numbers & Enemy HP Bars**
+- Floating damage numbers appear above enemies when hit.
+- Special attacks show larger, orange damage numbers.
+- Each enemy has a ProgressBar HP bar displayed above them.
+
+**7. Level Notifications**
+- A level name notification fades in and out when entering a new level.
+- Level 2 displays an additional message: "You have temporarily unlocked double jump for this level!"
+
+**8. Double Jump (Level 2 Only)**
+- Double jump is unlocked exclusively in Level 2.
+- Triggered via the Global autoload when the player transitions through the portal.
+
+**9. Audio**
+- Background music added to the main menu, Level 1, and Level 2.
+- Sound effects integrated for: jump, attack, special attack, dash, and player hurt.
+- Balloon enemy plays an explosion sound on death.
+
+**10. Enemy AI**
+- Level 1 mushroom enemies detect the player within range and play an attack animation.
+- Enemies deal continuous damage to the player on contact with a cooldown between hits.
+- Level 2 balloon enemy has an explosion on death that deals area damage to nearby players.
+- Enemies display HP bars and floating damage numbers when hit.
+
+---
+
+## Screenshots
+![Screenshot](week3-act1-1.png)
+![Screenshot](week3-act1-2.png)
+![Screenshot](week3-act2-1.png)
+
+---
+
+## Notes
+- The Global autoload script manages persistent state across scenes including current level, unlocked levels, and player HP.
+- Audio uses Godot's built-in AudioStreamPlayer nodes attached directly to scenes.
+- Future improvements may include more enemy types, ranged attacks, and a scoring system.
