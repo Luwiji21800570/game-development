@@ -216,6 +216,8 @@ This week focused on building out the full UI/UX system, integrating audio, and 
 - Audio uses Godot's built-in AudioStreamPlayer nodes attached directly to scenes.
 - Future improvements may include more enemy types, ranged attacks, and a scoring system.
 
+============================================================================================================
+
 ## 3D Basics & Optimization
 ## Date: March 6 (Week 4 - Activity 1)
 # Activity Overview
@@ -223,21 +225,21 @@ This activity focused on converting the 2D game prototype into a 3D scene in God
 
 ## Steps Taken
 
-# Created a new 3D scene inside the existing project
+Created a new 3D scene inside the existing project
 
-# Added a Node3D as the root node.
-# Saved as level3d.tscn to keep it modular within the project.
+Added a Node3D as the root node.
+Saved as level3d.tscn to keep it modular within the project.
 
 
 # Built the 3D environment
 
-# Added a CSGBox3D as the floor with collision enabled.
-# Placed additional CSGBox3D objects around the scene as obstacles and visual landmarks.
+Added a CSGBox3D as the floor with collision enabled.
+Placed additional CSGBox3D objects around the scene as obstacles and visual landmarks.
 
 
 # Set up the player
 
-# Root node: CharacterBody3D
+Root node: CharacterBody3D
 Added a MeshInstance3D with a CapsuleMesh for the player's visual representation.
 Added a CollisionShape3D with a CapsuleShape3D for physics collision.
 Scripted WASD movement with gravity and jumping using move_and_slide().
@@ -261,8 +263,6 @@ Configured a ProceduralSkyMaterial with sunset sky, horizon, and ground colors.
 
 Used Debug → Show FPS to monitor frame rate during runtime.
 Scene maintained stable 60 FPS due to lightweight CSG geometry and simple scripts.
-
-
 
 
 Screenshots
