@@ -215,3 +215,63 @@ This week focused on building out the full UI/UX system, integrating audio, and 
 - The Global autoload script manages persistent state across scenes including current level, unlocked levels, and player HP.
 - Audio uses Godot's built-in AudioStreamPlayer nodes attached directly to scenes.
 - Future improvements may include more enemy types, ranged attacks, and a scoring system.
+
+## 3D Basics & Optimization
+## Date: March 6 (Week 4 - Activity 1)
+# Activity Overview
+This activity focused on converting the 2D game prototype into a 3D scene in Godot, exploring 3D nodes, camera systems, lighting, and performance optimization targeting 60 FPS.
+
+## Steps Taken
+
+# Created a new 3D scene inside the existing project
+
+# Added a Node3D as the root node.
+# Saved as level3d.tscn to keep it modular within the project.
+
+
+# Built the 3D environment
+
+# Added a CSGBox3D as the floor with collision enabled.
+# Placed additional CSGBox3D objects around the scene as obstacles and visual landmarks.
+
+
+# Set up the player
+
+# Root node: CharacterBody3D
+Added a MeshInstance3D with a CapsuleMesh for the player's visual representation.
+Added a CollisionShape3D with a CapsuleShape3D for physics collision.
+Scripted WASD movement with gravity and jumping using move_and_slide().
+
+
+# Implemented a follow camera
+Added a Camera3D node with a script that follows the player from behind and above.
+Integrated mouse look to rotate the camera around the player horizontally and vertically.
+Player movement direction is relative to the camera's facing direction.
+
+
+# Added lighting
+
+Added a DirectionalLight3D with a warm sunset color (#FF9933) to simulate a low sun angle.
+Enabled shadows on the directional light.
+Added a WorldEnvironment node with ambient light in warm orange tones.
+Configured a ProceduralSkyMaterial with sunset sky, horizon, and ground colors.
+
+
+# Profiled for 60 FPS
+
+Used Debug → Show FPS to monitor frame rate during runtime.
+Scene maintained stable 60 FPS due to lightweight CSG geometry and simple scripts.
+
+
+
+
+Screenshots
+![Screenshot](week4-1.png)
+![Screenshot](week4-2.png)
+
+## Notes
+
+3D nodes such as CharacterBody3D, MeshInstance3D, CollisionShape3D, Camera3D, and DirectionalLight3D were used throughout this activity.
+Movement is camera-relative, meaning W always moves forward in the direction the camera faces.
+The scene was built inside the existing 2D project to demonstrate how Godot supports both 2D and 3D in the same project.
+Future improvements may include adding a 3D character model, textures, and more complex level geometry.
