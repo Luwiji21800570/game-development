@@ -216,7 +216,6 @@ This week focused on building out the full UI/UX system, integrating audio, and 
 - Audio uses Godot's built-in AudioStreamPlayer nodes attached directly to scenes.
 - Future improvements may include more enemy types, ranged attacks, and a scoring system.
 
-============================================================================================================
 
 ## 3D Basics & Optimization
 ## Date: March 6 (Week 4 - Activity 1)
